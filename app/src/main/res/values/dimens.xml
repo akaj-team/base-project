@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App-->
+    <dimen name="defaultTextSize">15dp</dimen>
+    <dimen name="secondaryTextSize">12dp</dimen>
+
+    <!-- StoreFragmentment-->
+    <dimen name="storeItemUIHeight">101dp</dimen>
+    <dimen name="storeItemUIContentHeight">100dp</dimen>
+    <dimen name="storeItemUIIconSize">80dp</dimen>
+    <dimen name="storeItemUIPadding">10dp</dimen>
+    <dimen name="storeItemUIStarIconSize">15dp</dimen>
+    <dimen name="storeItemUITvAddressTopMargin">5dp</dimen>
+</resources>
