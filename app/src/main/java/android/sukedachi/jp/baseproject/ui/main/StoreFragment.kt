@@ -17,12 +17,12 @@ import org.jetbrains.anko.AnkoContext
  */
 class StoreFragment : BaseFragment() {
 
-    private lateinit var viewModel: StoreFragmentViewModel
+    private lateinit var viewModel: StoreVMContract
     private lateinit var ui: StoreFragmentUI
     private val stores = mutableListOf<Store>()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModel = StoreFragmentViewModel(StoreRepository())
+        viewModel = StoreViewModel(StoreRepository())
         ui = StoreFragmentUI(stores)
         return ui.createView(AnkoContext.create(context, this))
     }

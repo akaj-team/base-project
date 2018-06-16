@@ -4,7 +4,7 @@ package android.sukedachi.jp.baseproject.ui.main
  *
  * @author at-cuongcao.
  */
-enum class StoreFragmentAdvanceParam(val advanceParam: Int) {
+enum class StoreAdvanceParam(val advanceParam: Int) {
 
     NEAREST(1),
 
