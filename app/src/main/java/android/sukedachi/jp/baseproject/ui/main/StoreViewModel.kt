@@ -8,5 +8,6 @@ import android.sukedachi.jp.baseproject.data.source.StoreRepository
  */
 class StoreViewModel(private val storeRepository: StoreRepository) : StoreVMContract {
 
-    override fun getExpressesStore() = storeRepository.getStores(StoreAdvanceParam.NEAREST.advanceParam, 1)
+    override fun getExpressesStore() = storeRepository
+            .getStores(StoreAdvanceParam.NEAREST.advanceParam, 1)
 }

@@ -21,17 +21,17 @@ class StoreFragment : BaseFragment() {
     private lateinit var ui: StoreFragmentUI
     private val stores = mutableListOf<Store>()
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModel = StoreViewModel(StoreRepository())
-        ui = StoreFragmentUI(stores)
-        return ui.createView(AnkoContext.create(context, this))
-    }
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getExpressesStore()
                 .observeOnUiThread()
                 .subscribe(this::handleGetStoreListSuccess, this::handleGetStoreListError)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        viewModel = StoreViewModel(StoreRepository())
+        ui = StoreFragmentUI(stores)
+        return ui.createView(AnkoContext.create(requireContext(), this))
     }
 
     override fun onBindViewModel() = Unit

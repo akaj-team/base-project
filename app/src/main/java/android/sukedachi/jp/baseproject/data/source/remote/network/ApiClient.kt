@@ -23,6 +23,7 @@ open class ApiClient private constructor(url: String? = null) {
 
     internal var token: String? = null
     private var baseUrl: String = if (url == null || url.isEmpty()) BuildConfig.BASE_API_URL else url
+    internal var isFromUnitTest: Boolean = false
 
     companion object : SingletonHolder<ApiClient, String>(::ApiClient) {
         private const val API_TIMEOUT = 10L // 10 minutes
@@ -40,7 +41,7 @@ open class ApiClient private constructor(url: String? = null) {
             // Request customization: add request headers
             val requestBuilder = original.newBuilder()
                     .method(original.method(), original.body())
-            if (token != null) {
+            if (token != null && !isFromUnitTest) {
                 requestBuilder.addHeader("Authorization", "Bearer $token")
             }
             val request = requestBuilder.build()
@@ -86,7 +87,7 @@ open class SingletonHolder<out T, in A>(private var creator: (A?) -> T) {
     /**
      * Generate instance for T class with argument A
      */
-    fun getInstance(arg: A?): T {
+    fun getInstance(arg: A?, isFromUnitTest: Boolean = false): T {
         val i = instance
         if (i != null) {
             return i
@@ -98,6 +99,9 @@ open class SingletonHolder<out T, in A>(private var creator: (A?) -> T) {
                 i2
             } else {
                 val created = creator(arg)
+                if (isFromUnitTest) {
+                    (created as? ApiClient)?.isFromUnitTest = isFromUnitTest
+                }
                 instance = created
                 created
             }

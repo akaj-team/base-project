@@ -1,0 +1,16 @@
+{
+  "store_list": [
+    {
+      "store_id": 10,
+      "store_name": "Store Name",
+      "store_address": "Store Address",
+      "store_distance": 20182109,
+      "store_image": "Store Image",
+      "store_rate": {
+        "rate": 1.0,
+        "rate_count": 1
+      }
+    }
+  ],
+  "next_page_flag": false
+}
